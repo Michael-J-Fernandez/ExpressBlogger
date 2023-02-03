@@ -28,9 +28,12 @@ Create one PUT route /blogs/update-one/:blog Title to update a blog post
 
 
 Both of the above routes should run validations on the incoming blog post body data BEFORE either creating a new blog post or updating a blog post. If the blog data is invalid, then a message should be sent in the http response indicating which validation failed and why
-Build out the blogData validator function to check for the following conditions
+Build out the blogData validator function to check for the following conditions:
+
 Title, text and author are required fields and they should be strings
 Title and author should be no longer than 40 characters in length (letters + whitespace)
+
+
 Stretch Goal:
 If category is defined and has a length greater than 0:
 " There can be no more than 10 entries for category

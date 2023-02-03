@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// const { validateBlogsData } = require('..validation/blogs');
+const { validateBlogData } = require('../validation/blogs');
 
 const sampleBlogs = [
     {
@@ -67,6 +67,14 @@ router.get('/all', (req, res) => {
 router.get('/single/:blog', (req, res) => {
     const singleBlog = sampleBlogs.filter(blog => blog.title === req.params.blog);
 
+    if (singleBlog.length === 0) {
+        res.json({
+            success: false,
+            message: "Blog not found."
+        })
+        return;
+    }
+
     res.json({
         success: true,
         blog: singleBlog
@@ -101,7 +109,15 @@ router.post('/create-one', (req, res) => {
         lastModified
     }
 
-    // validation goes here
+    const blogDataCheck = validateBlogData(newBlog);
+
+    if (blogDataCheck.isValid === false) {
+        res.json({
+            success: false,
+            message: blogDataCheck.message
+        })
+        return;
+    }
 
     sampleBlogs.push(newBlog);
 
@@ -122,7 +138,15 @@ router.put('/update-one/:blog', (req, res) => {
     updatedBlog.createdAt = titleToUpdate.createdAt;
     updatedBlog.lastModified = new Date();
 
-    // validation goes here
+    const blogDataCheck = validateBlogData(updatedBlog);
+
+    if (blogDataCheck.isValid === false) {
+        res.json({
+            success: false,
+            message: blogDataCheck.message
+        })
+        return;
+    }
 
     sampleBlogs[updateIndex] = updatedBlog;
 
