@@ -1,5 +1,3 @@
-// const express = require('express');
-
 const validateBlogData = (blogData) => {
 
     if (blogData.title === undefined || typeof(blogData.title) !== "string" || blogData.title.length > 40) {

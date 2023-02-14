@@ -36,11 +36,11 @@ Title and author should be no longer than 40 characters in length (letters + whi
 
 Stretch Goal:
 If category is defined and has a length greater than 0:
-" There can be no more than 10 entries for category
-All the entries must be strings
-All categories must be in the following list of strings:
-"Lorem"
-"ipsum"
-"dolor"
-"sit"
-"amet"
+    - " There can be no more than 10 entries for category
+    - All the entries must be strings
+    - All categories must be in the following list of strings:
+        "Lorem"
+        "ipsum"
+        "dolor"
+        "sit"
+        "amet"
